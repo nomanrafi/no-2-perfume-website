@@ -241,7 +241,7 @@ function layout(t, dt) {
       tiltZ = lerp(tiltZ, -0.42 + pF * 0.42, p1);
       rotY = lerp(rotY, Math.sin(pF * Math.PI * 3) * 0.55 + mouse.sx * 0.15, p1); // keep label facing camera (full spin showed blank back)
       // back to dark: product floats right, behind FAQ title
-      x = lerp(x, narrow ? 0 : 1.05, p3); y = lerp(y, 0.55, p3); z = lerp(z, 0.6, p3);
+      x = lerp(x, narrow ? 0 : 1.55, p3); y = lerp(y, 0.4, p3); z = lerp(z, 0.6, p3);
       sc = lerp(sc, 0.9, p3); tiltZ = lerp(tiltZ, -0.12, p3); rotY = lerp(rotY, 0.3, p3);
     } else {
       y -= p1 * (2.6 + ao * 0.4); z -= p1 * 2; sc *= 1 - p1 * 0.3;
