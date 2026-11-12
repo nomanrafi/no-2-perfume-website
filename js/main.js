@@ -36,6 +36,8 @@ const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const ease = (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const range = (v, a, b) => clamp((v - a) / (b - a));
+// frame-rate independent smoothing factor: k(rate, dt) == rate at 60fps
+const k = (rate, dt) => 1 - Math.pow(1 - rate, dt * 60);
 const N = PRODUCTS.length;
 const wrap = (o) => { o = ((o % N) + N) % N; return o > N / 2 ? o - N : o; };
 const isTouch = matchMedia('(pointer:coarse)').matches;
@@ -239,8 +241,8 @@ function layout(t, dt) {
       tiltZ = lerp(tiltZ, -0.42 + pF * 0.42, p1);
       rotY = lerp(rotY, Math.sin(pF * Math.PI * 3) * 0.55 + mouse.sx * 0.15, p1); // keep label facing camera (full spin showed blank back)
       // back to dark: product floats right, behind FAQ title
-      x = lerp(x, narrow ? 0 : 0.55, p3); y = lerp(y, 0.35, p3); z = lerp(z, 1.2, p3);
-      sc = lerp(sc, 1.1, p3); tiltZ = lerp(tiltZ, -0.12, p3); rotY = lerp(rotY, 0.3, p3);
+      x = lerp(x, narrow ? 0 : 1.05, p3); y = lerp(y, 0.55, p3); z = lerp(z, 0.6, p3);
+      sc = lerp(sc, 0.9, p3); tiltZ = lerp(tiltZ, -0.12, p3); rotY = lerp(rotY, 0.3, p3);
     } else {
       y -= p1 * (2.6 + ao * 0.4); z -= p1 * 2; sc *= 1 - p1 * 0.3;
     }
@@ -283,13 +285,14 @@ function layout(t, dt) {
 /* ------------------------------------------------------------------ loop */
 const clock = new THREE.Clock();
 function frame() {
-  const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
-  if (!dragging) vel *= 0.9;
-  pos += (target - pos) * (dragging ? 0.35 : 0.085);
+  const dt = Math.min(clock.getDelta(), 0.1), t = clock.elapsedTime;
+  if (!dragging) vel *= Math.pow(0.9, dt * 60);
+  pos += (target - pos) * k(dragging ? 0.35 : 0.085, dt);
   const a = ((Math.round(pos) % N) + N) % N;
   if (a !== active && smoothS < 0.3) { active = a; setAccent(active); }
-  mouse.sx += (mouse.x - mouse.sx) * 0.06; mouse.sy += (mouse.y - mouse.sy) * 0.06;
-  smoothS += (scrollS - smoothS) * 0.12;
+  mouse.sx += (mouse.x - mouse.sx) * k(0.06, dt); mouse.sy += (mouse.y - mouse.sy) * k(0.06, dt);
+  smoothS += (scrollS - smoothS) * k(0.12, dt);
+  if (Math.abs(scrollS - smoothS) > 2) smoothS = scrollS - Math.sign(scrollS - smoothS) * 2; // never lag more than 2 screens
   // slider dot: position within collection
   const prog = ((pos % N) + N) % N / (N - 1);
   $('#sliderDot').style.left = (clamp(prog) * 100) + '%';
