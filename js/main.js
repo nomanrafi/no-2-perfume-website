@@ -76,7 +76,7 @@ function prepModel(gltf) {
   const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
   root.position.sub(c);
   const g = new THREE.Group(); g.add(root);
-  g.scale.setScalar(2.0 / size.y);
+  g.scale.setScalar(1.55 / size.y);
   return g;
 }
 function buildItems(templates) {
@@ -217,11 +217,12 @@ function layout(t, dt) {
   items.forEach((it, i) => {
     const o = wrap(i - pos);
     const ao = Math.abs(o);
-    const sp = narrow ? 1.15 : 1.62;
-    let x = Math.sign(o) * (ao * sp - Math.max(0, ao - 1) * 0.12 * ao) ;
-    let y = 0.02 + Math.sin(t * 0.9 + it.seed) * 0.05 + (ao > 0.5 ? -0.05 : 0);
-    let z = -Math.pow(ao, 1.25) * 0.95;
-    let sc = lerp(1.0, 0.86, clamp(ao));
+    const sp = narrow ? 0.95 : 1.28;
+    // centre item sits higher (under the ring light), side items spread evenly across the width
+    let x = Math.sign(o) * (Math.min(ao, 1) * (sp + 0.12) + Math.max(0, ao - 1) * sp);
+    let y = lerp(0.32, -0.12 + Math.sin(it.seed * 2.3) * 0.12, clamp(ao)) + Math.sin(t * 0.9 + it.seed) * 0.04;
+    let z = -Math.pow(ao, 1.1) * 0.55;
+    let sc = lerp(1.22, 0.86, clamp(ao));
     let tiltZ = -0.24 + (ao > 0.5 ? Math.sin(it.seed * 3.1) * 0.12 : 0);
     let rotY = -o * 0.32 + Math.sin(t * 0.5 + it.seed) * 0.08;
     // mouse parallax on active
