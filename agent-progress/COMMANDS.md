@@ -61,3 +61,5 @@ Result: SUCCESS (only favicon 404). Preview output/preview/s10_check.jpg
 
 ### 15. Session #11: clone progress-save -> /data/project, velora-luxury-perfume -> /data/velora
 Result: SUCCESS. Push to progress-save = 403 with both tokens. Token #2 pushes velora. Logs mirrored to velora/agent-progress/.
+### 16. Session #12: A — 4 models (noir/blue/green/purple), 10 products w/ per-product notes+info, features use product notes; intro panel HTML (eyebrow, notes, specs, price)
+Result: written, untested

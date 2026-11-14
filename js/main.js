@@ -4,22 +4,45 @@ import { GLTFLoader } from './vendor/GLTFLoader.js';
 import { RoomEnvironment } from './vendor/RoomEnvironment.js';
 
 /* ------------------------------------------------------------------ data */
-const MODELS = { noir: 'assets/models/velora-eau-de-parfum.glb', blue: 'assets/models/velora-blue-elegance.glb' };
+const MODELS = {
+  noir: 'assets/models/velora-eau-de-parfum.glb',
+  blue: 'assets/models/velora-blue-elegance.glb',
+  green: 'assets/models/velora-green-parfum.glb',
+  purple: 'assets/models/velora-purple-elegance.glb',
+};
+// every product has its own notes (used by the feature steps below) + detail info
 const PRODUCTS = [
-  { name: ['NOIR', 'ÉCLAT'],    model: 'noir', c1: '#c9973f', c2: '#3a2608', text: 'Our signature eau de parfum. Smoked amber, black vanilla and warm oud wrapped in a midnight glass flacon with gold accents.' },
-  { name: ['BLUE', 'ELEGANCE'], model: 'blue', c1: '#2f63ff', c2: '#0a1a55', text: 'A fresh, luminous fragrance. Sea salt, bergamot and white musk — the calm confidence of a deep blue evening.' },
-  { name: ['AMBRE', 'NUIT'],    model: 'noir', c1: '#ff7a2c', c2: '#4a1604', text: 'Golden amber, saffron and tonka bean. A warm, magnetic trail that lingers long after the night has ended.' },
-  { name: ['AZUR', 'SILK'],     model: 'blue', c1: '#22c4ff', c2: '#03354d', text: 'Iris, cool lavender and soft cashmere woods. Silky, airy and clean — elegance you can wear every day.' },
-  { name: ['ROSE', 'OBSCURE'],  model: 'noir', c1: '#e8417f', c2: '#4d0a24', text: 'Dark Turkish rose, patchouli and black pepper. A bold floral with a mysterious, velvet-dark heart.' },
-  { name: ['ROYAL', 'MARINE'],  model: 'blue', c1: '#7b54ff', c2: '#1d0d58', text: 'Violet leaf, marine accord and vetiver. A regal, modern aquatic for those who make waves.' },
-  { name: ['OR', 'SAUVAGE'],    model: 'noir', c1: '#e3c25a', c2: '#3d3208', text: 'Wild fig, gold leather and cedar. Raw, radiant and untamed — luxury with an edge.' },
-  { name: ['OCÉAN', 'PRIVÉ'],   model: 'blue', c1: '#19d3b5', c2: '#033f36', text: 'Mint, green tea and driftwood. A private escape to turquoise waters, bottled.' },
+  { name: ['NOIR', 'ÉCLAT'], model: 'noir', c1: '#c9973f', c2: '#3a2608', family: 'Amber Woody', text: 'Our signature eau de parfum. Smoked amber, black vanilla and warm oud wrapped in a midnight glass flacon with gold accents.',
+    notes: ['Pink pepper, bergamot, cardamom', 'Black vanilla, iris, leather', 'Oud, smoked amber, benzoin'], intensity: 5, longevity: '10–12 h', sillage: 'Strong', season: 'Autumn · Winter', mood: 'Evening', price: '$165' },
+  { name: ['BLUE', 'ELEGANCE'], model: 'blue', c1: '#2f63ff', c2: '#0a1a55', family: 'Fresh Aquatic', text: 'A fresh, luminous fragrance. Sea salt, bergamot and white musk — the calm confidence of a deep blue evening.',
+    notes: ['Sea salt, bergamot, grapefruit', 'Lavender, geranium, sage', 'White musk, ambergris, cedar'], intensity: 3, longevity: '7–9 h', sillage: 'Moderate', season: 'Spring · Summer', mood: 'Day · Office', price: '$140' },
+  { name: ['VERDE', 'IMPÉRIAL'], model: 'green', c1: '#2fbf6a', c2: '#06371b', family: 'Green Aromatic', text: 'Crushed fig leaf, galbanum and vetiver. A bright green signature with the depth of an emerald forest after rain.',
+    notes: ['Galbanum, lime, crushed fig leaf', 'Green tea, basil, violet leaf', 'Vetiver, oakmoss, white cedar'], intensity: 3, longevity: '8–10 h', sillage: 'Moderate', season: 'Spring · Summer', mood: 'Day · Casual', price: '$150' },
+  { name: ['VIOLET', 'ROYAL'], model: 'purple', c1: '#9b4dff', c2: '#2a0a55', family: 'Floral Oriental', text: 'Velvet plum, Bulgarian rose and purple orchid over a warm base of tonka and suede. Regal, sensual, unforgettable.',
+    notes: ['Black plum, blackcurrant, saffron', 'Purple orchid, Bulgarian rose, violet', 'Tonka bean, suede, patchouli'], intensity: 4, longevity: '10–12 h', sillage: 'Strong', season: 'Autumn · Winter', mood: 'Night · Special', price: '$175' },
+  { name: ['AMBRE', 'NUIT'], model: 'noir', c1: '#ff7a2c', c2: '#4a1604', family: 'Warm Spicy', text: 'Golden amber, saffron and tonka bean. A warm, magnetic trail that lingers long after the night has ended.',
+    notes: ['Saffron, mandarin, cinnamon', 'Golden amber, rose, honey', 'Tonka bean, labdanum, sandalwood'], intensity: 4, longevity: '10–12 h', sillage: 'Strong', season: 'Autumn · Winter', mood: 'Evening', price: '$155' },
+  { name: ['AZUR', 'SILK'], model: 'blue', c1: '#22c4ff', c2: '#03354d', family: 'Soft Powdery', text: 'Iris, cool lavender and soft cashmere woods. Silky, airy and clean — elegance you can wear every day.',
+    notes: ['Lemon, aldehydes, neroli', 'Iris, cool lavender, peony', 'Cashmere woods, musk, heliotrope'], intensity: 2, longevity: '6–8 h', sillage: 'Soft', season: 'All year', mood: 'Everyday', price: '$130' },
+  { name: ['OCÉAN', 'PRIVÉ'], model: 'green', c1: '#19d3b5', c2: '#033f36', family: 'Citrus Fresh', text: 'Mint, green tea and driftwood. A private escape to turquoise waters, bottled.',
+    notes: ['Mint, lime, sea breeze', 'Green tea, jasmine, sea fennel', 'Driftwood, musk, ambrette'], intensity: 2, longevity: '6–8 h', sillage: 'Soft', season: 'Summer', mood: 'Holiday · Day', price: '$135' },
+  { name: ['ROSE', 'OBSCURE'], model: 'noir', c1: '#e8417f', c2: '#4d0a24', family: 'Dark Floral', text: 'Dark Turkish rose, patchouli and black pepper. A bold floral with a mysterious, velvet-dark heart.',
+    notes: ['Black pepper, raspberry, pink pepper', 'Turkish rose, geranium, clove', 'Patchouli, oud, dark musk'], intensity: 4, longevity: '9–11 h', sillage: 'Strong', season: 'Autumn · Winter', mood: 'Night', price: '$160' },
+  { name: ['ROYAL', 'MARINE'], model: 'purple', c1: '#7b54ff', c2: '#1d0d58', family: 'Modern Aquatic', text: 'Violet leaf, marine accord and vetiver. A regal, modern aquatic for those who make waves.',
+    notes: ['Violet leaf, marine accord, bergamot', 'Lavender, orris, cypress', 'Vetiver, ambroxan, cedar'], intensity: 3, longevity: '8–10 h', sillage: 'Moderate', season: 'All year', mood: 'Day · Evening', price: '$145' },
+  { name: ['OR', 'SAUVAGE'], model: 'noir', c1: '#e3c25a', c2: '#3d3208', family: 'Fruity Leather', text: 'Wild fig, gold leather and cedar. Raw, radiant and untamed — luxury with an edge.',
+    notes: ['Wild fig, pear, elemi', 'Gold leather, orange blossom, tobacco', 'Cedar, vetiver, castoreum accord'], intensity: 5, longevity: '12 h+', sillage: 'Very strong', season: 'Autumn · Winter', mood: 'Night · Statement', price: '$185' },
 ];
+// feature steps: tag/title/icon fixed, text comes from the active product's notes
 const FEATURES = [
-  { tag: 'TOP NOTES',     title: ['BRIGHT', 'FIRST IMPRESSION'], text: 'Sparkling citrus and spice open the fragrance — the first seconds that make people turn around.', icon: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>' },
-  { tag: 'HEART NOTES',   title: ['A RICH', 'FLORAL HEART'],     text: 'Hand-picked flowers and precious woods reveal the true character of the scent after a few minutes.', icon: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>' },
-  { tag: 'BASE NOTES',    title: ['DEEP &', 'LONG LASTING'],      text: 'Amber, musk and resins anchor the composition for up to 12 hours of soft, elegant trail.', icon: '<path d="M12 3l3 6 6 .9-4.5 4.3 1 6.3L12 17.6 6.5 20.5l1-6.3L3 9.9 9 9z"/>' },
-  { tag: 'CRAFTSMANSHIP', title: ['MADE IN', 'SMALL BATCHES'],    text: 'Each bottle is filled, sealed and finished by hand in our atelier, with 20% pure perfume oils.', icon: '<path d="M9 3h6M10 3v4l-4 5v8h12v-8l-4-5V3"/>' },
+  { tag: 'TOP NOTES', title: ['BRIGHT', 'FIRST IMPRESSION'], icon: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+    text: (p) => `<b>${p.notes[0]}</b> open ${p.name.join(' ').toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase())} — the first seconds that make people turn around.` },
+  { tag: 'HEART NOTES', title: ['THE', 'HEART OF IT'], icon: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+    text: (p) => `After a few minutes <b>${p.notes[1]}</b> reveal the true ${p.family.toLowerCase()} character of the scent.` },
+  { tag: 'BASE NOTES', title: ['DEEP &', 'LONG LASTING'], icon: '<path d="M12 3l3 6 6 .9-4.5 4.3 1 6.3L12 17.6 6.5 20.5l1-6.3L3 9.9 9 9z"/>',
+    text: (p) => `<b>${p.notes[2]}</b> anchor the composition for ${p.longevity} of ${p.sillage.toLowerCase()}, elegant trail.` },
+  { tag: 'CRAFTSMANSHIP', title: ['MADE IN', 'SMALL BATCHES'], icon: '<path d="M9 3h6M10 3v4l-4 5v8h12v-8l-4-5V3"/>',
+    text: (p) => `Each ${p.name.join(' ')} flacon is filled, sealed and finished by hand in our atelier — 20% pure perfume oils, 100 ml, ${p.price}.` },
 ];
 const FAQ = [
   ['How long does a Velora perfume last on the skin?', 'Our eaux de parfum contain 18–20% perfume oils and last 8–12 hours on skin, even longer on clothes.'],
@@ -115,12 +138,20 @@ function setAccent(i) {
   const pn = $('#pname'); set(pn); pn.classList.remove('swap'); void pn.offsetWidth; pn.classList.add('swap');
   set($('#dtitle'));
   $('#dtext').textContent = p.text;
+  $('#dnum').textContent = 'N° ' + String(i + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0');
+  $('#dfam').textContent = p.family.toUpperCase();
+  $('#dnotes').innerHTML = ['TOP', 'HEART', 'BASE'].map((l, k) => `<li><span>${l}</span>${p.notes[k]}</li>`).join('');
+  const dots = '<i class="on"></i>'.repeat(p.intensity) + '<i></i>'.repeat(5 - p.intensity);
+  $('#dspecs').innerHTML = [['INTENSITY', `<span class="dots5">${dots}</span>`], ['LONGEVITY', p.longevity], ['SILLAGE', p.sillage], ['SEASON', p.season], ['WEAR', p.mood], ['CONCENTRATION', 'EDP · 20%']]
+    .map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');
+  $('#dprice').textContent = p.price;
+  document.querySelectorAll('.feat').forEach((el, k) => { el.querySelector('p').innerHTML = FEATURES[k].text(p); el.querySelector('.fprod').textContent = p.name.join(' '); });
   colA.set(p.c1);
   rimL.color.set(p.c1); rimR.color.set(p.c1); under.color.set(p.c1);
 }
 
 /* ------------------------------------------------------------------ UI build */
-$('#feats').innerHTML = FEATURES.map((f, i) => `<div class="feat" data-i="${i}"><span class="tag"><b></b>${f.tag}</span><h3>${f.title.join('<br>')}</h3><p>${f.text}</p></div>`).join('');
+$('#feats').innerHTML = FEATURES.map((f, i) => `<div class="feat" data-i="${i}"><span class="tag"><b></b>${f.tag}</span><span class="fstep">0${i + 1} / 04 · <span class="fprod"></span></span><h3>${f.title.join('<br>')}</h3><p></p></div>`).join('');
 $('#icons').innerHTML = FEATURES.map((f, i) => `<li data-i="${i}" aria-label="${f.tag}"><svg viewBox="0 0 24 24">${f.icon}</svg></li>`).join('');
 $('#faqList').innerHTML = FAQ.map(([q, a]) => `<div class="qa"><button>${q}</button><div class="ans"><div><p>${a}</p></div></div></div>`).join('');
 document.querySelectorAll('.qa button').forEach((b) => b.addEventListener('click', () => b.parentElement.classList.toggle('open')));
@@ -315,8 +346,10 @@ const loader = new GLTFLoader(manager);
 const load = (url) => new Promise((res, rej) => loader.load(url, res, (e) => {
   if (e.total) $('#loadBar').style.width = Math.round((e.loaded / e.total) * 100) + '%';
 }, rej));
-Promise.all([load(MODELS.noir), load(MODELS.blue)]).then(([a, b]) => {
-  buildItems({ noir: prepModel(a), blue: prepModel(b) });
+const keys = Object.keys(MODELS);
+Promise.all(keys.map((k) => load(MODELS[k]))).then((gl) => {
+  const tpl = {}; keys.forEach((k, i) => (tpl[k] = prepModel(gl[i])));
+  buildItems(tpl);
   setAccent(0);
   $('#loader').classList.add('done');
   window.__ready = true;
