@@ -72,3 +72,6 @@ Result: SUCCESS. A-D render OK. Issue: FAQ bottle overlaps question chevrons. Pr
 ### 19. Session #20 screenshot test of 4ed3e85 + size bump
 $ shot.js /tmp/s20/a 0,2.5,4.5,8.9 ; shot_next.js /tmp/s20/b 2,3   (NODE_PATH=/vercel/sandbox/node_modules)
 Result: SUCCESS, green+purple render. Then bumped sizes in css/style.css: logo, ring 31vw, menu/contact, feature title/text/tag, FAQ title smaller (2.8vw), questions bigger (1.6vw)
+### 20. Session #21 verify 2dafcc7 + bigger detail panel text
+$ shot.js /tmp/s21/a 0,1.2,2.5,4.5,8.9 ; patch css/style.css (.intro width 39vw, dtitle 4vw, dtext 1.22vw, notes/specs/price/eyebrow bigger)
+Result: A-E render OK; panel text bumped. Preview agent-progress/preview/s21_check.jpg
