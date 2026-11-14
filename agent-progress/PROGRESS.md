@@ -90,3 +90,4 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - Session #14 (2026-11-15 00:53): started. Step A pushed (d736c7d) but untested. Testing A, then B-E. Clone dir /data/site.
 - Session #16 (2026-11-15 01:05): started. Resuming E: test A (d736c7d) + B-D (67518de) with screenshots, fix, push.
 - Session #17 (2026-11-15 01:10): started. Testing A (d736c7d) + B-D (67518de) with screenshots, fix, push. Clone dir /data/site.
+- Session #18 (2026-11-15 01:15): started. Testing A (d736c7d) + B-D (67518de) with screenshots, fix, push. Clone dir /data/velora.
