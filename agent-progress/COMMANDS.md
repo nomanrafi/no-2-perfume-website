@@ -75,3 +75,6 @@ Result: SUCCESS, green+purple render. Then bumped sizes in css/style.css: logo, 
 ### 20. Session #21 verify 2dafcc7 + bigger detail panel text
 $ shot.js /tmp/s21/a 0,1.2,2.5,4.5,8.9 ; patch css/style.css (.intro width 39vw, dtitle 4vw, dtext 1.22vw, notes/specs/price/eyebrow bigger)
 Result: A-E render OK; panel text bumped. Preview agent-progress/preview/s21_check.jpg
+### 21. Session #24 final verify
+$ shot.js /tmp/s24/a 0,2.5,8.9
+Result: SUCCESS (favicon 404 only). Preview agent-progress/preview/s24_final.jpg. Task DONE.

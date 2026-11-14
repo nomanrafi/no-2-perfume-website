@@ -26,14 +26,14 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - WEBSITE repo is now https://github.com/nomanrafi/velora-luxury-perfume (renamed; token #2). New GLBs: assets/models/velora-green-parfum.glb, velora-purple-elegance.glb
 - Blue-marked area in user's screenshot = left detail text panel (title + paragraph, e.g. ROSE OBSCURE).
 ### Session #11 plan
-- [ ] A: add green + purple products (MODELS, PRODUCTS), per-product features (notes)
-- [ ] B: ring light + logo bigger, MENU/CONTACT bigger
-- [ ] C: detail left panel: bigger text, better design, more info (family, intensity, longevity, sillage, size, price)
-- [ ] D: FAQ title smaller, questions bigger
-- [ ] E: screenshot verify, push, log
+- [x] A: add green + purple products (MODELS, PRODUCTS), per-product features (notes)
+- [x] B: ring light + logo bigger, MENU/CONTACT bigger
+- [x] C: detail left panel: bigger text, better design, more info (family, intensity, longevity, sillage, size, price)
+- [x] D: FAQ title smaller, questions bigger
+- [x] E: screenshot verify, push, log
 
 ## Status
-- Overall: IN PROGRESS (Session #11 new requests, see NEW TASK above)
+- Overall: DONE (Session #11 new requests A-E done & verified by Session #24, preview agent-progress/preview/s24_final.jpg)
 - Current step: done
 - Last updated: 2026-11-12 18:35 (Asia/Dhaka) by Session #9
 
@@ -97,3 +97,4 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - Session #22 (2026-11-15 01:45): started. Verifying b12de37 (A-E written; s21 panel text bump) with screenshots, final polish, push. Clone dir /data/velora-luxury-perfume. Auth via GIT_ASKPASS (token never in URL/config).
 - Session #23 (2026-11-15 02:05): started. Code A-E all present at b12de37. Quick screenshot verify, then mark DONE. Clone dir /data/velora.
 - Session #24 (2026-11-15 02:10): started. A-E code present (b12de37). One quick screenshot verify, then mark DONE. Clone dir /data/site.
+- Session #24: verified hero/detail/FAQ render OK (s24_final.jpg). A-E DONE. If user asks more: sizes in css/style.css, products in js/main.js PRODUCTS.
