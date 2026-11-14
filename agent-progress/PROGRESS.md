@@ -92,3 +92,4 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - Session #17 (2026-11-15 01:10): started. Testing A (d736c7d) + B-D (67518de) with screenshots, fix, push. Clone dir /data/site.
 - Session #18 (2026-11-15 01:15): started. Testing A (d736c7d) + B-D (67518de) with screenshots, fix, push. Clone dir /data/velora.
 - Session #19 (2026-11-15 01:25): started. Resuming E: verify b6e19ea (FAQ bottle fix) + green/purple products with shot_next.js, final polish, push. Clone dir /data/velora.
+- Session #20 (2026-11-15 01:35): started. Verifying b6e19ea (A-E) with screenshots, final polish, push. Clone dir /data/site.
