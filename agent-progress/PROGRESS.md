@@ -84,3 +84,4 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - Session #9 (2026-11-12 18:40): started, resuming step 6 (verify 0815772 with screenshots, then polish + Step 7 README).
 - Session #10 (2026-11-12 18:50): started. Task already DONE (website 6cae0d0). User asked how to live-review the site. Re-verifying with screenshots; GitHub Pages NOT enabled (needs user's OK, it makes the site public).
 - Session #11 (2026-11-15 00:40): started. Previous chat agent (unlogged) was stopped by usage policy; its edits were NOT pushed (website HEAD 51ba3a0 = user GLB upload). Doing NEW TASK plan A-E.
+- Session #12 (2026-11-15 00:45): started. Session #11 only pushed its start log (plan A-E unchecked, code untouched at 51ba3a0). Doing plan A-E now. Logs live in website repo agent-progress/ (progress-save push = 403). Local clone dir: /data/site.
