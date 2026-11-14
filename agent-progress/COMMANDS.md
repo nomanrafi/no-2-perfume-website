@@ -66,3 +66,6 @@ Result: written, untested
 ### 17. Session #14: B+C+D CSS (logo/ring/menu/contact bigger; glass detail card w/ eyebrow, notes, specs, price; bigger feature text; FAQ title smaller, questions bigger)
 $ python3 patch css/style.css
 Result: written, testing with screenshots next
+### 18. Session #18 screenshot test of 7d3dd1d
+$ shot.js /tmp/s18/a 0,2.5,4.5,8.9
+Result: SUCCESS. A-D render OK. Issue: FAQ bottle overlaps question chevrons. Preview agent-progress/preview/s18_test.jpg
