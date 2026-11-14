@@ -63,3 +63,6 @@ Result: SUCCESS (only favicon 404). Preview output/preview/s10_check.jpg
 Result: SUCCESS. Push to progress-save = 403 with both tokens. Token #2 pushes velora. Logs mirrored to velora/agent-progress/.
 ### 16. Session #12: A — 4 models (noir/blue/green/purple), 10 products w/ per-product notes+info, features use product notes; intro panel HTML (eyebrow, notes, specs, price)
 Result: written, untested
+### 17. Session #14: B+C+D CSS (logo/ring/menu/contact bigger; glass detail card w/ eyebrow, notes, specs, price; bigger feature text; FAQ title smaller, questions bigger)
+$ python3 patch css/style.css
+Result: written, testing with screenshots next
