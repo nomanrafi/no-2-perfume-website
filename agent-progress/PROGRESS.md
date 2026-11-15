@@ -104,3 +104,5 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 - [x] F1: ring 31vw->24vw, logo 2.45->1.95vw, sub 1.02->.82vw, menu/contact smaller, FAQ title 2.8->2.2vw, questions 1.6->1.25vw, answers 1.15->1vw (css/style.css); carousel sc 1.22/0.86 -> 1.36/0.96 (js/main.js layout)
 - [x] F2: detail panel (.intro/.feats + text) scaled to ~82% (css/style.css)
 - Session #25 (2026-11-15 11:55): started, did F1.
+
+- Session #25 (2026-11-15 12:00): verified F1+F2 (ring/logo/menu/contact/FAQ smaller, carousel bigger, detail panel smaller) with screenshots agent-progress/preview/s25_F_verify.jpg. All OK. Task DONE.
