@@ -143,8 +143,46 @@ body.touch .cursor{display:none}
 .load-bar i{display:block;height:100%;width:0;background:#fff;transition:width .3s}
 
 @media (max-width:760px){
-  .intro,.feats{left:var(--pad);right:var(--pad);top:auto;bottom:10vh;transform:none;width:auto}
-  .intro{padding:18px}.specs{grid-template-columns:repeat(2,1fr)}.feats{bottom:22vh}
-  .arrow-l{left:6vw}.arrow-r{right:6vw}
-  .pname{font-size:7.2vw}.slider{width:70vw}
+  /* MOBILE ONLY — desktop rules above are untouched */
+  /* header: sound left, MENU + CONTACT right (smaller); logo + ring light centred BELOW the row so nothing overlaps */
+  .top{height:56px;padding:0 16px}
+  .sound{font-size:10px;gap:6px}
+  .nav{gap:12px}
+  .menu{font-size:10px;gap:6px}
+  .dots{grid-template-columns:repeat(2,3px);gap:2px}.dots i{width:3px;height:3px}
+  .contact{font-size:10px;padding:8px 12px;border-radius:4px}
+  .ring{top:50px;width:62vw}
+  .logo{top:64px}
+  .logo-main{font-size:22px}.logo-sub{font-size:9px;margin-top:4px}
+  /* hero */
+  .arrow-l{left:4vw}.arrow-r{right:4vw}
+  .hero-bottom{bottom:9vh}
+  .pname{font-size:7.6vw}.slider{width:70vw}
+  .glow{filter:blur(18px)}
+  /* detail: card sits in the bottom part, bottle stays in the top part (see MOB_* in main.js) */
+  .intro,.feats{left:14px;right:14px;top:auto;width:auto}
+  .intro{bottom:70px;transform:none;padding:16px;backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(160deg,rgba(18,18,20,.72),rgba(10,10,12,.55));box-shadow:0 14px 34px rgba(0,0,0,.35)}
+  .eyebrow{font-size:9px;margin-bottom:8px}
+  .dtitle{font-size:30px}
+  .dtext{font-size:12.5px;line-height:1.45;margin-top:8px}
+  .notes{margin-top:10px;gap:4px}.notes li{font-size:11.5px;padding-bottom:4px}
+  .specs{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .specs dt{font-size:8px;letter-spacing:.12em}.specs dd{font-size:11px}
+  .dbuy{margin-top:10px;padding-top:9px}.price{font-size:22px}.size{font-size:8px}
+  .feats{bottom:96px;height:auto}
+  .feat{top:auto;bottom:0;transform:translateY(24px)}
+  .feat.on{transform:none}
+  .feat h3{font-size:30px}
+  .feat p{font-size:14px;margin-top:8px}
+  .icons{top:auto;bottom:22px;right:14px;transform:none;flex-direction:row;gap:10px}
+  .icons li{width:34px;height:34px}
+  .dline{left:14px;bottom:38px;width:90px}
+  .statement{font-size:17vw;filter:blur(3px)}
+  /* FAQ */
+  .faq{padding:20vh 18px 10vh}
+  .faq-title{font-size:24px}
+  .faq-list{width:100%;margin-top:28px}
+  .qa button{font-size:15px;padding:16px 0}
+  .qa .ans p{font-size:13px}
+  .foot{font-size:8px;padding:16px}
 }
