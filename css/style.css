@@ -38,17 +38,17 @@ a{color:inherit;text-decoration:none;cursor:none}
 .sound.off .bars i{animation:none;height:20%}
 @keyframes bar{0%,100%{height:25%}50%{height:100%}}
 .logo{position:absolute;left:50%;top:calc(var(--pad)*.95);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;line-height:.82;z-index:2}
-.logo-main{font-family:var(--display);font-style:italic;font-weight:900;font-stretch:125%;font-size:clamp(24px,2.45vw,46px);letter-spacing:-.01em}
-.logo-sub{font-family:var(--display);font-style:italic;font-weight:800;font-stretch:125%;font-size:clamp(11px,1.02vw,19px);letter-spacing:.34em;margin-top:5px;color:var(--accent);transition:color .6s}
+.logo-main{font-family:var(--display);font-style:italic;font-weight:900;font-stretch:125%;font-size:clamp(20px,1.95vw,37px);letter-spacing:-.01em}
+.logo-sub{font-family:var(--display);font-style:italic;font-weight:800;font-stretch:125%;font-size:clamp(9px,.82vw,15px);letter-spacing:.34em;margin-top:5px;color:var(--accent);transition:color .6s}
 .nav{display:flex;align-items:center;gap:clamp(14px,1.4vw,26px)}
-.menu{display:flex;align-items:center;gap:9px;font-size:clamp(14px,1.15vw,21px);font-weight:600;letter-spacing:.08em}
+.menu{display:flex;align-items:center;gap:8px;font-size:clamp(12px,.92vw,17px);font-weight:600;letter-spacing:.08em}
 .dots{display:grid;grid-template-columns:repeat(2,4px);gap:3px}
 .dots i{width:4px;height:4px;background:#fff;border-radius:50%}
-.contact{background:#fff;color:#000;font-size:clamp(14px,1.08vw,20px);font-weight:700;letter-spacing:.08em;padding:clamp(11px,.95vw,17px) clamp(20px,1.7vw,32px);border-radius:5px;transition:background .3s,color .3s}
+.contact{background:#fff;color:#000;font-size:clamp(11px,.86vw,16px);font-weight:700;letter-spacing:.08em;padding:clamp(9px,.75vw,14px) clamp(16px,1.35vw,26px);border-radius:5px;transition:background .3s,color .3s}
 .contact:hover{background:var(--accent);color:#000}
 
 /* ---------- ring light (hanging lamp above centre product) ---------- */
-.ring{position:fixed;left:50%;top:calc(var(--pad)*.3);width:clamp(300px,31vw,600px);aspect-ratio:3.1/1;transform:translateX(-50%);z-index:3;pointer-events:none;transition:opacity .4s}
+.ring{position:fixed;left:50%;top:calc(var(--pad)*.3);width:clamp(230px,24vw,460px);aspect-ratio:3.1/1;transform:translateX(-50%);z-index:3;pointer-events:none;transition:opacity .4s}
 .ring-disc{position:absolute;inset:0 0 18% 0;border-radius:50%;background:radial-gradient(60% 70% at 50% 35%,#3a3a3e 0%,#18181a 60%,#0b0b0c 100%);box-shadow:0 2px 0 #4b4b50 inset,0 6px 14px rgba(0,0,0,.7)}
 .ring-light{position:absolute;left:6%;right:6%;bottom:6%;height:34%;border-radius:50%;border:2px solid rgba(255,255,255,.95);box-shadow:0 0 10px 2px rgba(255,255,255,.9),0 0 26px 6px rgba(255,255,255,.35),inset 0 0 10px rgba(255,255,255,.7);background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.25),rgba(255,255,255,0) 70%)}
 .ring-beam{position:absolute;left:8%;right:8%;top:80%;height:260%;background:radial-gradient(50% 60% at 50% 0%,rgba(255,255,255,.16),rgba(255,255,255,0) 75%);filter:blur(6px)}
@@ -115,16 +115,16 @@ a{color:inherit;text-decoration:none;cursor:none}
 #scroller{position:relative;z-index:6;pointer-events:none}
 .spacer{height:800vh}
 .faq{pointer-events:auto;min-height:100vh;padding:28vh calc(var(--pad)*3) 12vh;display:flex;flex-direction:column;align-items:center}
-.faq-title{font-family:var(--display);font-style:italic;font-weight:900;font-stretch:125%;font-size:clamp(24px,2.8vw,54px);line-height:.88;text-align:center;display:flex;flex-direction:column;align-items:center;letter-spacing:-.01em;text-shadow:0 8px 40px rgba(0,0,0,.5)}
+.faq-title{font-family:var(--display);font-style:italic;font-weight:900;font-stretch:125%;font-size:clamp(20px,2.2vw,42px);line-height:.88;text-align:center;display:flex;flex-direction:column;align-items:center;letter-spacing:-.01em;text-shadow:0 8px 40px rgba(0,0,0,.5)}
 .faq-list{width:min(100%,clamp(340px,54vw,1040px));margin-top:clamp(28px,3vw,56px)}
 .qa{border-bottom:1px solid rgba(255,255,255,.22)}
-.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:20px;padding:clamp(16px,1.4vw,26px) 0;font-size:clamp(18px,1.6vw,30px);font-weight:500;color:rgba(255,255,255,.92)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:20px;padding:clamp(16px,1.4vw,26px) 0;font-size:clamp(15px,1.25vw,23px);font-weight:500;color:rgba(255,255,255,.92)}
 .qa button::after{content:"";width:9px;height:9px;border-right:1px solid #fff;border-bottom:1px solid #fff;transform:rotate(45deg) translateY(-2px);transition:transform .35s;flex:none}
 .qa.open button::after{transform:rotate(-135deg)}
 .qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s}
 .qa.open .ans{grid-template-rows:1fr}
 .qa .ans>div{overflow:hidden}
-.qa .ans p{padding:0 0 clamp(16px,1.3vw,24px);font-size:clamp(15px,1.15vw,21px);line-height:1.6;color:rgba(255,255,255,.65);max-width:44em}
+.qa .ans p{padding:0 0 clamp(16px,1.3vw,24px);font-size:clamp(13px,1vw,18px);line-height:1.6;color:rgba(255,255,255,.65);max-width:44em}
 .foot{pointer-events:auto;display:flex;justify-content:space-between;padding:var(--pad) calc(var(--pad)*1.15) calc(var(--pad)*1.2);font-size:clamp(8px,.58vw,10px);letter-spacing:.16em;color:rgba(255,255,255,.5)}
 
 /* ---------- cursor ---------- */
