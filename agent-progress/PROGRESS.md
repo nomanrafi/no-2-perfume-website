@@ -102,5 +102,5 @@ Extra chat instruction (Session #1): "Glb file 'no 2 perfume website er repo te 
 ## NEW TASK (Session #25, 2026-11-15 11:55) — user chat request
 "ring light box + VELORA PARFUMS logo aktu choto, carousel products aktu boro (besi na), MENU/CONTACT aktu choto, scroll-down details section aktu choto, FAQ title aro choto, questions text aktu choto. Push fast after each small task."
 - [x] F1: ring 31vw->24vw, logo 2.45->1.95vw, sub 1.02->.82vw, menu/contact smaller, FAQ title 2.8->2.2vw, questions 1.6->1.25vw, answers 1.15->1vw (css/style.css); carousel sc 1.22/0.86 -> 1.36/0.96 (js/main.js layout)
-- [ ] F2: detail panel (.intro/.feats) smaller  ← IN PROGRESS
+- [x] F2: detail panel (.intro/.feats + text) scaled to ~82% (css/style.css)
 - Session #25 (2026-11-15 11:55): started, did F1.
