@@ -242,7 +242,7 @@ const heroUI = $('#heroUI'), detailUI = $('#detailUI'), ring = $('#ring'), intro
 const bgColor = $('.bg-color'), bgFlash = $('.bg-flash'), statement = $('#statement'), dline = $('#dline');
 const feats = [...document.querySelectorAll('.feat')], icons = [...document.querySelectorAll('#icons li')];
 let featOn = -1;
-const MOB_DY = 1.22, MOB_DZ = 2.2, MOB_DS = 1.2; // mobile detail pose: bottle in the top half, card below
+const MOB_DY = 1.22, MOB_DZ = 2.2, MOB_DS = 1.2, MOB_FY = 0.6, MOB_FS = 1.42; // MOB_F*: features step (shorter text) -> bottle lower/bigger, no empty gap // mobile detail pose: bottle in the top half, card below
 const tmpDark = new THREE.Color(0x0b0b0d), white = new THREE.Color(1, 1, 1);
 
 function layout(t, dt) {
@@ -275,9 +275,9 @@ function layout(t, dt) {
       // detail pose
       const dx = narrow ? 0.0 : lerp(0.75, 0.15, ease(pF));
       x = lerp(x, dx, p1);
-      y = lerp(y, M ? MOB_DY : narrow ? 0.5 : -0.1, p1);
+      y = lerp(y, M ? lerp(MOB_DY, MOB_FY, ease(range(s, 1.5, 1.9))) : narrow ? 0.5 : -0.1, p1);
       z = lerp(z, M ? MOB_DZ : 3.6, p1);
-      sc = lerp(sc, M ? MOB_DS : 1.55, p1);
+      sc = lerp(sc, M ? lerp(MOB_DS, MOB_FS, ease(range(s, 1.5, 1.9))) : 1.55, p1);
       tiltZ = lerp(tiltZ, -0.42 + pF * 0.42, p1);
       rotY = lerp(rotY, Math.sin(pF * Math.PI * 3) * 0.55 + mouse.sx * 0.15, p1); // keep label facing camera (full spin showed blank back)
       // back to dark: product floats right, behind FAQ title
